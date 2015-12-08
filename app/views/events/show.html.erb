@@ -1,17 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %><br />
+<div class="row" >
+  <div class="col-sm-2"><label for="date"><b>Event Date:</b></label></div>
+  <div class="col-sm-10"><%= @event.date %></div>
+</div>
 
-  <strong>Event Type:</strong>
-  <%= @event.category %><br />
+<div class="row" >
+  <div class="col-sm-2"><label for="category"><b>Event Type:</b></label></div>
+  <div class="col-sm-10"><%= @event.category %></div>
+</div>
 
-  <strong>Venue:</strong>
-  <%= @event.venue %><br />
-
+<div class="row" >
+  <div class="col-sm-2"><label for="venue"><b>Venue:</b></label></div>
+  <div class="col-sm-10"><%= @event.venue %></div>
+</div>
+</br>
 <div class="actions">
     <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-info" %>
-    <%= link_to 'Destroy', event_path(@event), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete', event_path(@event), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
     <%= link_to 'Back to Events', events_path, class: "btn btn-default" %>
 </div>

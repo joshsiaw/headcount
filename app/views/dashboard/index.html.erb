@@ -1,1 +1,12 @@
-<h1>Hello World</h1>
+<div class="jumbotron center">
+
+  <h1>Welcome!</h1>
+
+  <h3>Total Events: <%= Event.count %>, Total Attendees: <%= Attendee.count %></h3></br>
+
+  <p>
+    <%= link_to "Create New Event", new_event_path, class: "btn btn-primary" %>
+    <%= link_to "Create New Attendee", new_attendee_path, class: "btn btn-primary" %>
+  </p>
+
+</div>

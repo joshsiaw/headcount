@@ -10,30 +10,49 @@
       </ul>
     </div>
   <% end %>
+  </br>
 
-  <strong>First Name:</strong>
-  <%= f.text_field :first_name %><br />
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label for="date" class="col-sm-2">First Name</label>
+      <div class="col-sm-10"><%= f.text_field :first_name, class: "form-control" %></div>
+    </div>
 
-  <strong>Last Name:</strong>
-  <%= f.text_field :last_name %><br />
+    <div class="form-group">
+      <label for="type" class="col-sm-2">Last Name</label>
+      <div class="col-sm-10"><%= f.text_field :last_name, class: "form-control" %></div>
+    </div>
 
-  <strong>Contact No:</strong>
-  <%= f.text_field :contact_no %><br />
+    <div class="form-group">
+      <label for="date" class="col-sm-2">Contact No</label>
+      <div class="col-sm-10"><%= f.text_field :contact_no, class: "form-control" %></div>
+    </div>
 
-  <strong>Email:</strong>
-  <%= f.text_field :email %><br />
+    <div class="form-group">
+      <label for="date" class="col-sm-2">Email</label>
+      <div class="col-sm-10"><%= f.text_field :email, class: "form-control" %></div>
+    </div>
 
-  <strong>Age:</strong>
-  <%= f.text_field :age %><br />
+    <div class="form-group">
+      <label for="type" class="col-sm-2">Age</label>
+      <div class="col-sm-10"><%= f.text_field :age, class: "form-control" %></div>
+    </div>
 
-  <strong>Photo URL:</strong>
-  <%= f.text_field :photo_url %><br />
+    <div class="form-group">
+      <label for="date" class="col-sm-2">Photo URL</label>
+      <div class="col-sm-10"><%= f.text_field :photo_url, class: "form-control" %></div>
+    </div>
 
-  <strong>Category:</strong>
-  <%= f.text_field :category %><br />
+    <div class="form-group">
+      <label for="date" class="col-sm-2">Category</label>
+      <div class="col-sm-10"><%= f.text_field :category, class: "form-control" %></div>
+    </div>
 
-  <strong>Group:</strong>
-  <%= f.text_field :group %><br />
+    <div class="form-group">
+      <label for="type" class="col-sm-2">Group</label>
+      <div class="col-sm-10"><%= f.text_field :group, class: "form-control" %></div>
+    </div>
+  </div>
 
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
