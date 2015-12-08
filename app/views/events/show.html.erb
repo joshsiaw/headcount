@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %><br />
+
+  <strong>Event Type:</strong>
+  <%= @event.category %><br />
+
+  <strong>Venue:</strong>
+  <%= @event.venue %><br />
+
+<div class="actions">
+    <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-info" %>
+    <%= link_to 'Destroy', event_path(@event), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to Events', events_path, class: "btn btn-default" %>
+</div>

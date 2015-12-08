@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Attendees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact No.</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Category</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendees.each do |attendee| %>
+      <tr>
+        <td><%= attendee.first_name %></td>
+        <td><%= attendee.last_name %></td>
+        <td><%= attendee.contact_no %></td>
+        <td><%= attendee.email %></td>
+        <td><%= attendee.age %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.group %></td>
+        <td><%= link_to 'Show', attendee_path(attendee) %></td>
+        <td><%= link_to 'Edit', edit_attendee_path(attendee) %></td>
+        <td><%= link_to 'Destroy', attendee_path(attendee), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Attendee', new_attendee_path, class: "btn btn-primary" %>
+<%= link_to 'Back to Dashboard', root_path %>

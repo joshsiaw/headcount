@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @attendee.first_name %><br />
+
+  <strong>Last Name:</strong>
+  <%= @attendee.last_name %><br />
+
+  <strong>Contact No:</strong>
+  <%= @attendee.contact_no %><br />
+
+  <strong>Contact No:</strong>
+  <%= @attendee.contact_no %><br />
+
+  <strong>Age:</strong>
+  <%= @attendee.contact_no %><br />
+
+  <strong>Photo URL:</strong>
+  <%= @attendee.photo_url %><br />
+
+  <strong>Category:</strong>
+  <%= @attendee.category %><br />
+
+  <strong>Group:</strong>
+  <%= @attendee.group %><br />
+
+<div class="actions">
+    <%= link_to 'Edit', edit_attendee_path(@attendee), class: "btn btn-info" %>
+    <%= link_to 'Destroy', attendee_path(@attendee), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to Attendees', attendees_path, class: "btn btn-default" %>
+</div>
