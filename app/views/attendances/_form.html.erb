@@ -1,0 +1,49 @@
+<%= form_for [@attendance] do |f| %>
+  <% if @attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+
+      <ul>
+      <% @attendance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </br>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Select</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact No.</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Category</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Attendee.all.each do |attendee| %>
+      <tr>
+        <td></td>
+        <td><%= attendee.first_name %></td>
+        <td><%= attendee.last_name %></td>
+        <td><%= attendee.contact_no %></td>
+        <td><%= attendee.email %></td>
+        <td><%= attendee.age %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.group %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Back to Event', events_path, class: "btn btn-default" %>
+  </div>
+<% end %>

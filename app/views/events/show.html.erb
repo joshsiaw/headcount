@@ -14,7 +14,72 @@
   <div class="col-sm-2"><label for="venue"><b>Venue:</b></label></div>
   <div class="col-sm-10"><%= @event.venue %></div>
 </div>
-</br>
+
+<h3>Present</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact No.</th>
+      <th>Age</th>
+      <th>Category</th>
+      <th>Group</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.attendees.each do |attendee| %>
+      <tr>
+        <td><%= attendee.first_name %></td>
+        <td><%= attendee.last_name %></td>
+        <td><%= attendee.contact_no %></td>
+        <td><%= attendee.age %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.group %></td>
+        <td>
+          <%= link_to 'Remove', event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id)), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Add Attendees</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact No.</th>
+      <th>Age</th>
+      <th>Category</th>
+      <th>Group</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Attendee.not_present(@event).each do |attendee| %>
+      <tr>
+        <td><%= attendee.first_name %></td>
+        <td><%= attendee.last_name %></td>
+        <td><%= attendee.contact_no %></td>
+        <td><%= attendee.age %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.group %></td>
+        <td>
+        <%= link_to 'Add', event_attendances_path(@event.id, attendee_id: attendee.id), class: "btn btn-success", method: :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <div class="actions">
     <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-info" %>
     <%= link_to 'Delete', event_path(@event), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>

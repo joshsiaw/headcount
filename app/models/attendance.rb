@@ -4,4 +4,10 @@ class Attendance < ActiveRecord::Base
 
   validates :event_id, presence: true
   validates :attendee_id, presence: true
+
+  class << self
+    def find_attendance(event_id, attendee_id)
+      Attendance.find_by(event_id: event_id, attendee_id: attendee_id)
+    end
+  end
 end
