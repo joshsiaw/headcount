@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :attendances, dependant: :destroy
+  has_many :attendances, dependent: :destroy
   has_many :attendees, through: :attendances
 
   validates :date, presence: true
