@@ -14,43 +14,47 @@
 
   <div class="form-horizontal">
     <div class="form-group">
-      <label for="date" class="col-sm-2">First Name</label>
+      <label for="first_name" class="col-sm-2">First Name</label>
       <div class="col-sm-10"><%= f.text_field :first_name, class: "form-control" %></div>
     </div>
 
     <div class="form-group">
-      <label for="type" class="col-sm-2">Last Name</label>
+      <label for="last_name" class="col-sm-2">Last Name</label>
       <div class="col-sm-10"><%= f.text_field :last_name, class: "form-control" %></div>
     </div>
 
     <div class="form-group">
-      <label for="date" class="col-sm-2">Contact No</label>
+      <label for="contact_no" class="col-sm-2">Contact No</label>
       <div class="col-sm-10"><%= f.text_field :contact_no, class: "form-control" %></div>
     </div>
 
     <div class="form-group">
-      <label for="date" class="col-sm-2">Email</label>
+      <label for="email" class="col-sm-2">Email</label>
       <div class="col-sm-10"><%= f.text_field :email, class: "form-control" %></div>
     </div>
 
     <div class="form-group">
-      <label for="type" class="col-sm-2">Age</label>
+      <label for="age" class="col-sm-2">Age</label>
       <div class="col-sm-10"><%= f.text_field :age, class: "form-control" %></div>
     </div>
 
     <div class="form-group">
-      <label for="date" class="col-sm-2">Photo URL</label>
+      <label for="photo_url" class="col-sm-2">Photo URL</label>
       <div class="col-sm-10"><%= f.text_field :photo_url, class: "form-control" %></div>
     </div>
 
     <div class="form-group">
-      <label for="date" class="col-sm-2">Category</label>
-      <div class="col-sm-10"><%= f.text_field :category, class: "form-control" %></div>
+      <label for="category" class="col-sm-2">Category</label>
+      <div class="col-sm-10">
+        <%= f.select(:category, options_for_select(Attendee::CATEGORY)) %>
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="type" class="col-sm-2">Group</label>
-      <div class="col-sm-10"><%= f.text_field :group, class: "form-control" %></div>
+      <label for="group" class="col-sm-2">Group</label>
+      <div class="col-sm-10">
+        <%= f.select(:group, options_for_select(Attendee::GROUP)) %>
+      </div>
     </div>
   </div>
 
