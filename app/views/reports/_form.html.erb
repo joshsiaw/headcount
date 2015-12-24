@@ -1,0 +1,37 @@
+<%= form_for [@event, @report] do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </br>
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label for="date" class="col-sm-2">Author</label>
+      <div class="col-sm-10" ><%= f.text_field :author, class: "form-control" %></div>
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="col-sm-2">Group</label>
+      <div class="col-sm-10">
+        <%= f.select(:group, options_for_select(Attendee::GROUP)) %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="date" class="col-sm-2">Remark</label>
+      <div class="col-sm-10"><%= f.text_field :remark, class: "form-control" %></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Back to Reports', event_reports_path(@event), class: "btn btn-default" %>
+  </div>
+<% end %>

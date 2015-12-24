@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224030704) do
+ActiveRecord::Schema.define(version: 20151224115144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,18 @@ ActiveRecord::Schema.define(version: 20151224030704) do
     t.integer  "attendances_count", default: 0
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "author"
+    t.string   "group"
+    t.string   "remark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reports", ["event_id"], name: "index_reports_on_event_id", using: :btree
+
   add_foreign_key "attendances", "attendees"
   add_foreign_key "attendances", "events"
+  add_foreign_key "reports", "events"
 end

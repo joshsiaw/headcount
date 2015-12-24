@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="author"><b>Author:</b></label></div>
+  <div class="col-sm-10"><%= @report.author %></div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="group"><b>Group:</b></label></div>
+  <div class="col-sm-10"><%= @report.group %></div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="remark"><b>Remark:</b></label></div>
+  <div class="col-sm-10"><%= @report.remark %></div>
+</div>
+</br>
+<div class="actions">
+    <%= link_to 'Edit', edit_event_report_path(@event, @report), class: "btn btn-info" %>
+    <%= link_to 'Delete', event_report_path(@event, @report), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back to Reports', event_reports_path(@event), class: "btn btn-default" %>
+</div>

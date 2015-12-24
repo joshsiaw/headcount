@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :events do
     resources :attendances
+    resources :reports
   end
   resources :attendees
   

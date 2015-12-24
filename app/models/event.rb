@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :attendances, dependent: :destroy
   has_many :attendees, through: :attendances
+  has_many :reports, dependent: :destroy
 
   validates :date, presence: true
   validates :category, presence: true
