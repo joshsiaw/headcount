@@ -9,9 +9,10 @@
       <th>Last Name</th>
       <th>Contact No.</th>
       <th>Email</th>
-      <th>Age</th>
+      <th>Gender</th>
       <th>Category</th>
       <th>Group</th>
+      <th>Remark</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -23,9 +24,10 @@
         <td><%= attendee.last_name %></td>
         <td><%= attendee.contact_no %></td>
         <td><%= attendee.email %></td>
-        <td><%= attendee.age %></td>
+        <td><%= attendee.gender %></td>
         <td><%= attendee.category %></td>
         <td><%= attendee.group %></td>
+        <td><%= attendee.remark %></td>
         <td>
           <%= link_to 'View', attendee_path(attendee) %>
           <%= link_to 'Edit', edit_attendee_path(attendee) %>

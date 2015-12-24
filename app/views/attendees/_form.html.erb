@@ -39,6 +39,13 @@
     </div>
 
     <div class="form-group">
+      <label for="gender" class="col-sm-2">Gender</label>
+      <div class="col-sm-10">
+        <%= f.select(:gender, options_for_select(Attendee::GENDER)) %>
+      </div>
+    </div>
+
+    <div class="form-group">
       <label for="photo_url" class="col-sm-2">Photo URL</label>
       <div class="col-sm-10"><%= f.text_field :photo_url, class: "form-control" %></div>
     </div>
@@ -55,6 +62,11 @@
       <div class="col-sm-10">
         <%= f.select(:group, options_for_select(Attendee::GROUP)) %>
       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="remark" class="col-sm-2">Remark</label>
+      <div class="col-sm-10"><%= f.text_field :remark, class: "form-control" %></div>
     </div>
   </div>
 
