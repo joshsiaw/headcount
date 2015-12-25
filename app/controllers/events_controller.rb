@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json, :js
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary]
+  respond_to :html, :json, :js, :pdf
 
   def index
     @events = Event.all
@@ -44,6 +44,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def generate_summary
+    respond_to do |format|
+      format.pdf { generate_event_summary(@event) }
+    end
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
@@ -51,5 +57,20 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:date, :venue, :category)
+    end
+
+    def generate_event_summary(event)
+      report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'event_summary.tlf')
+      report.start_new_page do
+        item(:date).value(event.date)
+        item(:venue).value(event.venue)
+        item(:type).value(event.category)
+        item(:total_attendance).value(event.attendances.count)
+        item(:total_reports).value(event.reports.count)
+      end
+
+      send_data report.generate, filename: 'event_summary.pdf', 
+                                 type: 'application/pdf', 
+                                 disposition: 'attachment'
     end
 end

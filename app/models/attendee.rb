@@ -9,7 +9,7 @@ class Attendee < ActiveRecord::Base
   validates :group, presence: true
 
   scope :not_present, -> (event) { where.not(id: event.attendees.pluck(:id)).order('attendees.first_name') }
-  scope :group_by, -> (group) { where("event.attendees.group" => group)}
+  scope :group_by, -> (group) { where("group" => group)}
 
   CATEGORY =
     [
