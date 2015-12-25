@@ -21,6 +21,7 @@
         <td>
           <%= link_to 'View', event_report_path(@event, report) %>
           <%= link_to 'Edit', edit_event_report_path(@event, report) %>
+          <%= link_to 'PDF', generate_pdf_event_report_path(@event, report, format: 'pdf'), method: :post %>
           <%= link_to 'Delete', event_report_path(@event, report), method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>

@@ -18,9 +18,13 @@ Rails.application.routes.draw do
     end
 
     resources :attendances
-    resources :reports
+    resources :reports do 
+      member do 
+        post "generate_pdf"
+      end
+    end
   end
-  
+
   resources :attendees
   
 
