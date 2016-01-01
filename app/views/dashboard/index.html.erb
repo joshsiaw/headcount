@@ -2,7 +2,8 @@
 
   <h1>Welcome!</h1>
 
-  <h3>Total Events: <%= Event.count %>, Total Attendees: <%= Attendee.count %></h3></br>
+  <h3>Total Events: <%= Event.count %>, Total Attendees: <%= Attendee.count %>, Last Event Attandance: <%= Event.last.attendances.count %></h3></br>
+
 
   <p>
     <%= link_to "Create New Event", new_event_path, class: "btn btn-primary" %>

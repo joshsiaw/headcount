@@ -79,6 +79,13 @@ class ReportsController < ApplicationController
             row.values category: attendee.category
           end
         end
+
+        Attendee.not_present(event).group_by(report.group).each do |absentee|
+          pdf.list(:absentees).add_row do |row|
+            row.values name: absentee.name
+            row.values category: absentee.category
+          end
+        end
       end
 
       send_data pdf.generate, filename: 'egroup_report.pdf', 
