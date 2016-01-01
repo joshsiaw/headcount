@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary, :filter_attendees]
+  before_action :set_new_attendees, only: [:show]
   respond_to :html, :json, :js, :pdf
 
   def index
@@ -50,9 +51,18 @@ class EventsController < ApplicationController
     end
   end
 
+  def filter_attendees
+    @new_attendees = Attendee.not_present(@event).group_by(params[:group])
+    puts "this group is #{params[:group]}"
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def set_new_attendees
+      @new_attendees = Attendee.not_present(@event)
     end
 
     def event_params

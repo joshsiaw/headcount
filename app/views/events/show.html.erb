@@ -47,37 +47,22 @@
   </tbody>
 </table>
 
-<h3>Add Attendees</h3>
+<h3>Add Attendees</h3></br>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Contact No.</th>
-      <th>Age</th>
-      <th>Category</th>
-      <th>Group</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% Attendee.not_present(@event).each do |attendee| %>
-      <tr>
-        <td><%= attendee.first_name %></td>
-        <td><%= attendee.last_name %></td>
-        <td><%= attendee.contact_no %></td>
-        <td><%= attendee.age %></td>
-        <td><%= attendee.category %></td>
-        <td><%= attendee.group %></td>
-        <td>
-        <%= link_to 'Add', event_attendances_path(@event.id, attendee_id: attendee.id), class: "btn btn-success", method: :post %>
-        </td>
-      </tr>
+<div class="dropdown">
+  Filter By 
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownAttendeeGrp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Group
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownAttendeeGrp">
+    <% Attendee::GROUP.each do |group| %>
+      <li><%= link_to group[0], filter_attendees_event_path(@event, group: group[1]), remote:true %></li>
     <% end %>
-  </tbody>
-</table>
+  </ul></br></br>
+</div>
+
+<%= render "events/add_attendees", event: @event, new_attendees: @new_attendees %>
 
 
 <div class="actions">

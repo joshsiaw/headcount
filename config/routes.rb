@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :events do
     member do 
       post "generate_summary"
+      get "filter_attendees"
     end
 
     resources :attendances

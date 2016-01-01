@@ -1,0 +1,29 @@
+<table class="table new-attendees">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Contact No.</th>
+      <th>Age</th>
+      <th>Category</th>
+      <th>Group</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% new_attendees.each do |attendee| %>
+      <tr>
+        <td><%= attendee.first_name %></td>
+        <td><%= attendee.last_name %></td>
+        <td><%= attendee.contact_no %></td>
+        <td><%= attendee.age %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.group %></td>
+        <td>
+        <%= link_to 'Add', event_attendances_path(event.id, attendee_id: attendee.id), class: "btn btn-success", method: :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
