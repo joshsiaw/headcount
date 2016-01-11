@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
   validates :date, presence: true
   validates :category, presence: true
 
+  scope :order_by_created_at, -> { order('events.created_at DESC, events.id') }
+
   CATEGORY =
     [
       ["Service", "service"],

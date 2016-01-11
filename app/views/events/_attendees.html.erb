@@ -1,4 +1,4 @@
-<table class="table new-attendees">
+<table class="table attendees">
   <thead>
     <tr>
       <th>First Name</th>
@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% Attendee.not_present(@event).each do |attendee| %>
+    <% @event.attendees.each do |attendee| %>
       <tr>
         <td><%= attendee.first_name %></td>
         <td><%= attendee.last_name %></td>
@@ -21,7 +21,7 @@
         <td><%= attendee.category %></td>
         <td><%= attendee.group %></td>
         <td>
-        <%= link_to 'Add', event_attendances_path(event.id, attendee_id: attendee.id), class: "btn btn-success", method: :post, remote: true %>
+          <%= link_to 'Remove', event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id)), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
         </td>
       </tr>
     <% end %>

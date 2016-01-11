@@ -3,7 +3,7 @@ class AttendeesController < ApplicationController
   respond_to :html, :json, :js
 
   def index
-    @attendees = Attendee.all
+    @attendees = Attendee.all.order_by_alphabetical
   end
 
   def show

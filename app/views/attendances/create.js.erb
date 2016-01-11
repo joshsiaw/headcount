@@ -1,0 +1,6 @@
+<% if @attendance.valid? %>
+  $("table.new-attendees").replaceWith('<%= escape_javascript(render("events/add_attendees", event: @event)) %>');
+  $("table.attendees").replaceWith('<%= escape_javascript(render("events/attendees", event: @event)) %>');
+<% else %>
+  alert("Something went wrong");
+<% end %>

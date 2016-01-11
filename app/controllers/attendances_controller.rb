@@ -20,12 +20,13 @@ class AttendancesController < ApplicationController
 
   def create
     @attendance = Attendance.new(create_attendance_params)
-    if @attendance.save
-      redirect_to event_path(@event)
-      flash[:notice] = "Attendance successfully created"
-    else
-      respond_with(@attendance)
-    end
+    #if @attendance.save
+    #  redirect_to event_path(@event)
+    #  flash[:notice] = "Attendance successfully created"
+    #else
+    #  respond_with(@attendance)
+    #end
+    @attendance.save
   end
 
   def update
@@ -38,12 +39,13 @@ class AttendancesController < ApplicationController
   end
 
   def destroy
-    if @attendance.destroy
-      redirect_to event_path(@event)
-      flash[:notice] = "Attendance successfully removed"
-    else
-      respond_with(@attendance)
-    end
+    @attendance.destroy
+    #if @attendance.destroy
+    #  redirect_to event_path(@event)
+    #  flash[:notice] = "Attendance successfully removed"
+    #else
+    #  respond_with(@attendance)
+    #end
   end
 
   private

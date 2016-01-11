@@ -13,10 +13,10 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @events.order_by_created_at.each do |event| %>
       <tr>
         <td><%= event.date %></td>
-        <td><%= event.category %></td>
+        <td><%= event.category.capitalize %></td>
         <td><%= event.venue %></td>
         <td>
           <%= link_to 'View', event_path(event) %>

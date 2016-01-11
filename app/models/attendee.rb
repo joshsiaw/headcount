@@ -10,9 +10,11 @@ class Attendee < ActiveRecord::Base
 
   scope :not_present, -> (event) { where.not(id: event.attendees.pluck(:id)).order('attendees.first_name') }
   scope :group_by, -> (group) { where("group" => group)}
+  scope :order_by_alphabetical, -> { order('attendees.first_name ASC, attendees.id') }
 
   CATEGORY =
     [
+      ["Visitor", "visitor"],
       ["Newcomer", "newcomer"],
       ["Regular", "regular"],
       ["Core", "core"],
@@ -28,8 +30,9 @@ class Attendee < ActiveRecord::Base
       ["12-14 (Chri)", "12-14 (Chri)"],
       ["12-14 (Ruth)", "12-14 (Ruth)"],
       ["15-16 (Yen Mii)", "15-16 (Yen Mii)"],
-      ["17 and above (Jas)", "17 and above (Jas)"],
-      ["17 and above (Eleni)", "17 and above (Eleni)"]
+      ["15-16 (Jas)", "17 and above (Jas)"],
+      ["17 and above (Eleni)", "17 and above (Eleni)"],
+      ["Others", "others"]
     ]
 
     GENDER = 
