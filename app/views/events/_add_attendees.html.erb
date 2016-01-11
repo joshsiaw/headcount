@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% Attendee.not_present(@event).each do |attendee| %>
+    <% new_attendees.each do |attendee| %>
       <tr>
         <td><%= attendee.first_name %></td>
         <td><%= attendee.last_name %></td>

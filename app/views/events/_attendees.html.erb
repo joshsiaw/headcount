@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @event.attendees.each do |attendee| %>
+    <% @event.attendees.order_by_alphabetical.each do |attendee| %>
       <tr>
         <td><%= attendee.first_name %></td>
         <td><%= attendee.last_name %></td>
