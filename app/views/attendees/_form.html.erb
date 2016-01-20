@@ -1,4 +1,4 @@
-<%= form_for [@attendee] do |f| %>
+<%= simple_form_for [@attendee] do |f| %>
   <% if @attendee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this attendee from being saved:</h2>
@@ -41,7 +41,11 @@
     <div class="form-group">
       <label for="gender" class="col-sm-2">Gender</label>
       <div class="col-sm-10">
-        <%= f.select(:gender, options_for_select(Attendee::GENDER)) %>
+        <%= f.input :gender, 
+                    as: :select,
+                    collection: Attendee::GENDER,
+                    include_blank: false,
+                    label: false %>
       </div>
     </div>
 
@@ -53,14 +57,22 @@
     <div class="form-group">
       <label for="category" class="col-sm-2">Category</label>
       <div class="col-sm-10">
-        <%= f.select(:category, options_for_select(Attendee::CATEGORY)) %>
+        <%= f.input :category, 
+            as: :select,
+            collection: Attendee::CATEGORY,
+            include_blank: false,
+            label: false %>
       </div>
     </div>
 
     <div class="form-group">
       <label for="group" class="col-sm-2">Group</label>
       <div class="col-sm-10">
-        <%= f.select(:group, options_for_select(Attendee::GROUP)) %>
+        <%= f.input :group, 
+            as: :select,
+            collection: Attendee::GROUP,
+            include_blank: false,
+            label: false %>
       </div>
     </div>
 
