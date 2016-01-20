@@ -18,7 +18,7 @@
         <td><%= attendee.last_name %></td>
         <td><%= attendee.contact_no %></td>
         <td><%= attendee.age %></td>
-        <td><%= attendee.category %></td>
+        <td><%= attendee.category.capitalize %></td>
         <td><%= attendee.group %></td>
         <td>
         <%= link_to 'Add', event_attendances_path(event.id, attendee_id: attendee.id), class: "btn btn-success", method: :post, remote: true %>
