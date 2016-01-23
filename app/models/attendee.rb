@@ -11,6 +11,7 @@ class Attendee < ActiveRecord::Base
   scope :not_present, -> (event) { where.not(id: event.attendees.pluck(:id)).order('attendees.first_name') }
   scope :group_by, -> (group) { where("group" => group)}
   scope :order_by_alphabetical, -> { order('attendees.first_name ASC, attendees.id') }
+  scope :visitors, -> (event) { where('category = ? OR category = ?', 'visitor', 'newcomer') }
 
   CATEGORY =
     [

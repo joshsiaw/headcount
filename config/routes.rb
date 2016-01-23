@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do 
       post "generate_summary"
       get "filter_attendees"
+      get "summary"
     end
 
     resources :attendances

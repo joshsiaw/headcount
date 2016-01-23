@@ -11,6 +11,11 @@
 </div>
 
 <div class="row" >
+  <div class="col-sm-2"><label for="total_present"><b>Total Present:</b></label></div>
+  <div class="col-sm-10"><%= @event.attendees.group_by(@report.group).count %></div>
+</div>
+
+<div class="row" >
   <div class="col-sm-2"><label for="remark"><b>Remark:</b></label></div>
   <div class="col-sm-10"><%= @report.remark %></div>
 </div>

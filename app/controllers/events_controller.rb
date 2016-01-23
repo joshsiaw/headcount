@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary, :filter_attendees]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary, :filter_attendees, :summary]
   before_action :set_new_attendees, only: [:show]
   respond_to :html, :json, :js, :pdf
 
@@ -55,6 +55,9 @@ class EventsController < ApplicationController
     @new_attendees = Attendee.not_present(@event).group_by(params[:group])
   end
 
+  def summary
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
@@ -73,7 +76,7 @@ class EventsController < ApplicationController
       report.start_new_page do
         item(:date).value(event.date)
         item(:venue).value(event.venue)
-        item(:type).value(event.category)
+        item(:type).value(event.category.capitalize)
         item(:total_attendance).value(event.attendances.count)
         item(:total_reports).value(event.reports.count)
       end
