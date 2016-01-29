@@ -24,13 +24,13 @@
         <td><%= attendee.group %></td>
         <td>
           <%= link_to attendee_path(attendee) do %>
-            <i class="glyphicon glyphicon-eye-open"></i>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-eye-open" title="View"></i>
           <% end %>
           <%= link_to edit_attendee_path(attendee) do %>
-            <i class="glyphicon glyphicon-edit"></i>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-edit" title="Edit"></i>
           <% end %>
-          <%= link_to attendee_path(attendee), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="glyphicon glyphicon-trash"></i>
+          <%= link_to attendee_path(attendee), method: :delete, data: { confirm: 'Confirm DELETE?' } do %>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-trash" title="Delete"></i>
           <% end %>
         </td>
       </tr>

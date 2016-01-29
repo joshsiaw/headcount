@@ -19,10 +19,18 @@
         <td><%= report.group %></td>
         <td><%= report.created_at %></td>
         <td>
-          <%= link_to 'View', event_report_path(@event, report) %>
-          <%= link_to 'Edit', edit_event_report_path(@event, report) %>
-          <%= link_to 'PDF', generate_pdf_event_report_path(@event, report, format: 'pdf'), method: :post %>
-          <%= link_to 'Delete', event_report_path(@event, report), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to event_report_path(@event, report) do %>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-eye-open" title="View"></i>
+          <% end %>
+          <%= link_to edit_event_report_path(@event, report) do %>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-edit" title="Edit"></i>
+          <% end %>
+          <%= link_to generate_pdf_event_report_path(@event, report, format: 'pdf'), method: :post do %>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-save-file" title="Generate PDF"></i>
+          <% end %>
+          <%= link_to event_report_path(@event, report), method: :delete, data: { confirm: 'Confirm DELETE?' } do %>
+            <i style="font-size:1.5em;" class="glyphicon glyphicon-trash" title="Delete"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
