@@ -12,17 +12,18 @@ class Attendee < ActiveRecord::Base
   scope :group_by, -> (group) { where("group" => group)}
   scope :order_by_alphabetical, -> { order('attendees.first_name ASC, attendees.id') }
   scope :visitors, -> (event) { event.attendees.where('category = ? OR category = ?', 'visitor', 'newcomer') }
+  scope :first_timers, -> (event) { where('date(created_at) = ?', event.date) }
 
   CATEGORY =
     [
-      ["Visitor", "visitor"],
       ["Newcomer", "newcomer"],
+      ["Visitor", "visitor"],
       ["Regular", "regular"],
       ["Core", "core"],
       ["Leader", "leader"]
     ]
 
-  GROUP =
+  GROUP = 
     [
       ["12-14 (Dave)", "12-14 (Dave)"],
       ["15-16 (Hao Jie)", "15-16 (Hao Jie)"],

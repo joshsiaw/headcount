@@ -1,9 +1,7 @@
 <table class="table attendees">
   <thead>
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Contact No.</th>
+      <th>Name</th>
       <th>Age</th>
       <th>Category</th>
       <th>Group</th>
@@ -14,14 +12,14 @@
   <tbody>
     <% @event.attendees.order_by_alphabetical.each do |attendee| %>
       <tr>
-        <td><%= attendee.first_name %></td>
-        <td><%= attendee.last_name %></td>
-        <td><%= attendee.contact_no %></td>
+        <td><%= attendee.name %></td>
         <td><%= attendee.age %></td>
         <td><%= attendee.category.capitalize %></td>
         <td><%= attendee.group %></td>
         <td>
-          <%= link_to 'Remove', event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id)), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+          <%= link_to event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id)), class: "btn btn-danger", method: :delete, remote: true  do %>
+            <i class="glyphicon glyphicon-minus" title="Delete"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
