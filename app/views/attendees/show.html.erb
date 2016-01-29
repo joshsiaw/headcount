@@ -39,6 +39,11 @@
   <div class="col-sm-2"><label for="group"><b>Group:</b></label></div>
   <div class="col-sm-10"><%= @attendee.group %></div>
 </div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="remark"><b>Remark:</b></label></div>
+  <div class="col-sm-10"><%= @attendee.remark %></div>
+</div>
 </br>
 <div class="actions">
     <%= link_to 'Edit', edit_attendee_path(@attendee), class: "btn btn-info" %>

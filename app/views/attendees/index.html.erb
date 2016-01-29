@@ -2,17 +2,14 @@
 
 <h1>Attendees</h1>
 
-<table class="table">
+<table class="table" data-classes="table-no-bordered" data-toggle="table" data-search="true">
   <thead>
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Contact No.</th>
-      <th>Email</th>
-      <th>Gender</th>
-      <th>Category</th>
-      <th>Group</th>
-      <th>Remark</th>
+      <th data-sortable="true">First Name</th>
+      <th data-sortable="true">Last Name</th>
+      <th data-sortable="true">Age</th>
+      <th data-sortable="true">Category</th>
+      <th data-sortable="true">Group</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -22,21 +19,24 @@
       <tr>
         <td><%= attendee.first_name %></td>
         <td><%= attendee.last_name %></td>
-        <td><%= attendee.contact_no %></td>
-        <td><%= attendee.email %></td>
-        <td><%= attendee.gender.capitalize %></td>
+        <td><%= attendee.age %></td>
         <td><%= attendee.category.capitalize %></td>
         <td><%= attendee.group %></td>
-        <td><%= attendee.remark %></td>
         <td>
-          <%= link_to 'View', attendee_path(attendee) %>
-          <%= link_to 'Edit', edit_attendee_path(attendee) %>
-          <%= link_to 'Delete', attendee_path(attendee), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to attendee_path(attendee) do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+          <% end %>
+          <%= link_to edit_attendee_path(attendee) do %>
+            <i class="glyphicon glyphicon-edit"></i>
+          <% end %>
+          <%= link_to attendee_path(attendee), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="glyphicon glyphicon-trash"></i>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<br/>
 <%= link_to 'Add Attendee', new_attendee_path, class: "btn btn-primary" %>
 <%= link_to 'Back to Dashboard', root_path, class: "btn btn-default" %>
