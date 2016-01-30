@@ -17,7 +17,7 @@
         <td><%= attendee.category.capitalize %></td>
         <td><%= attendee.group %></td>
         <td>
-        <%= link_to event_attendances_path(event.id, attendee_id: attendee.id), class: "btn btn-success", method: :post, remote: true do %>
+        <%= link_to event_attendances_path(event.id, attendee_id: attendee.id, group: @group), class: "btn btn-success", method: :post, remote: true do %>
           <i class="glyphicon glyphicon-plus" title="Delete"></i>
         <% end %>
         </td>

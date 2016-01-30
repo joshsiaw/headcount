@@ -53,6 +53,7 @@ class EventsController < ApplicationController
 
   def filter_attendees
     @new_attendees = Attendee.not_present(@event).group_by(params[:group])
+    @group = params[:group]
   end
 
   def summary

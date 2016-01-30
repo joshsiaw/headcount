@@ -9,10 +9,10 @@ class Attendee < ActiveRecord::Base
   validates :group, presence: true
 
   scope :not_present, -> (event) { where.not(id: event.attendees.pluck(:id)).order('attendees.first_name') }
-  scope :group_by, -> (group) { where("group" => group)}
+  scope :group_by, -> (group) { where("group" => group) if group.present? }
   scope :order_by_alphabetical, -> { order('attendees.first_name ASC, attendees.id') }
   scope :visitors, -> (event) { event.attendees.where('category = ? OR category = ?', 'visitor', 'newcomer') }
-  scope :first_timers, -> (event) { event.attendees.where('attendances_count <= 1') }
+  scope :first_timers, -> (event) { event.attendee.where('attendances_count <= 1') }
 
   CATEGORY =
     [

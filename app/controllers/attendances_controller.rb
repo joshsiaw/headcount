@@ -27,7 +27,8 @@ class AttendancesController < ApplicationController
     #  respond_with(@attendance)
     #end
     @attendance.save
-    @new_attendees = Attendee.not_present(@event)
+    @new_attendees = Attendee.not_present(@event).group_by(params[:group])
+    @group = params[:group]
   end
 
   def update
@@ -41,7 +42,8 @@ class AttendancesController < ApplicationController
 
   def destroy
     @attendance.destroy
-    @new_attendees = Attendee.not_present(@event)
+    @new_attendees = Attendee.not_present(@event).group_by(params[:group])
+    @group = params[:group]
     #if @attendance.destroy
     #  redirect_to event_path(@event)
     #  flash[:notice] = "Attendance successfully removed"

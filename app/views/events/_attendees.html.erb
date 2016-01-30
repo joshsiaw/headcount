@@ -10,14 +10,14 @@
   </thead>
 
   <tbody>
-    <% @event.attendees.order_by_alphabetical.each do |attendee| %>
+    <% @event.attendees.group_by(@group).order_by_alphabetical.each do |attendee| %>
       <tr>
         <td><%= attendee.name %></td>
         <td><%= attendee.age %></td>
         <td><%= attendee.category.capitalize %></td>
         <td><%= attendee.group %></td>
         <td>
-          <%= link_to event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id)), class: "btn btn-danger", method: :delete, remote: true  do %>
+          <%= link_to event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id), group: @group), class: "btn btn-danger", method: :delete, remote: true  do %>
             <i class="glyphicon glyphicon-minus" title="Delete"></i>
           <% end %>
         </td>
