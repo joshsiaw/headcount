@@ -12,7 +12,7 @@ class Attendee < ActiveRecord::Base
   scope :group_by, -> (group) { where("group" => group)}
   scope :order_by_alphabetical, -> { order('attendees.first_name ASC, attendees.id') }
   scope :visitors, -> (event) { event.attendees.where('category = ? OR category = ?', 'visitor', 'newcomer') }
-  scope :first_timers, -> (event) { where('date(created_at) = ?', event.date) }
+  scope :first_timers, -> (event) { event.attendees.where('attendances_count <= 1') }
 
   CATEGORY =
     [

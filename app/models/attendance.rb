@@ -1,6 +1,6 @@
 class Attendance < ActiveRecord::Base
   belongs_to :event, counter_cache: true
-  belongs_to :attendee
+  belongs_to :attendee, counter_cache: true
 
   validates :event_id, presence: true
   validates :attendee_id, presence: true
