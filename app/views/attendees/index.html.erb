@@ -10,6 +10,7 @@
       <th data-sortable="true">Age</th>
       <th data-sortable="true">Category</th>
       <th data-sortable="true">Group</th>
+      <th data-sortable="true">Visits</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= attendee.age %></td>
         <td><%= attendee.category.capitalize %></td>
         <td><%= attendee.group %></td>
+        <td><%= attendee.attendances_count %></td>
         <td>
           <%= link_to attendee_path(attendee) do %>
             <i style="font-size:1.5em;" class="glyphicon glyphicon-eye-open" title="View"></i>
