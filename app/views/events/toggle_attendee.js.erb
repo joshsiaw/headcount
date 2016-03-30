@@ -1,0 +1,5 @@
+<% if Attendance.exists?(event_id: @event.id, attendee_id: @attendee.id) %>
+  $("#attendee_<%= @attendee.id %>").addClass("selected")
+<% else %>
+  $("#attendee_<%= @attendee.id %>").removeClass("selected")
+<% end %>

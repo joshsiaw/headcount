@@ -1,27 +1,12 @@
-<table class="table attendees">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Category</th>
-      <th>Group</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @event.attendees.group_by(@group).order_by_alphabetical.each do |attendee| %>
-      <tr>
-        <td><%= attendee.name %></td>
-        <td><%= attendee.age %></td>
-        <td><%= attendee.category.capitalize %></td>
-        <td><%= attendee.group %></td>
-        <td>
-          <%= link_to event_attendance_path(@event, Attendance.find_attendance(@event.id, attendee.id), group: @group), class: "btn btn-danger", method: :delete, remote: true  do %>
-            <i class="glyphicon glyphicon-minus" title="Delete"></i>
-          <% end %>
-        </td>
-      </tr>
+<div id="attendees" class="transitions-enabled">
+  <% Attendee.all.each do |attendee| %>
+    <%= link_to toggle_attendee_event_path(@event, attendee_id: attendee.id), method: :put, remote: true do %>
+      <div id="attendee_<%= attendee.id %>" class="box panel panel-default <%= 'selected' if Attendance.exists?(event_id: @event.id, attendee_id: attendee.id) %>">
+        <%= image_tag attendee.image.url(:thumb) %>
+        <div class="panel-body">
+          <%= attendee.name %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>

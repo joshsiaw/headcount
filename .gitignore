@@ -20,3 +20,5 @@
 # Ignore database config
 #   Copy from database.yml.example & make your own
 config/database.yml
+
+/public/system/*

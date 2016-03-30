@@ -29,6 +29,10 @@
     <%= link_to 'Back to Events', events_path, class: "btn btn-default" %>
 </div>
 
+<h3>Attendees</h3>
+
+<%= render "events/attendees", event: @event %>
+
 <h3>Add Attendees</h3>
 
 <div class="dropdown">
@@ -46,6 +50,5 @@
 
 <%= render "events/add_attendees", event: @event, new_attendees: @new_attendees %>
 
-<h3>Present</h3>
 
-<%= render "events/attendees", event: @event %>
+

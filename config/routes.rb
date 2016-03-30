@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post "generate_summary"
       get "filter_attendees"
       get "summary"
+      put "toggle_attendee"
     end
 
     resources :attendances

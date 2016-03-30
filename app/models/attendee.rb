@@ -1,7 +1,7 @@
 class Attendee < ActiveRecord::Base
   has_many :attendances
   has_many :events, through: :attendances
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: "user.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :first_name, presence: true
@@ -27,15 +27,15 @@ class Attendee < ActiveRecord::Base
 
   GROUP = 
     [
-      ["12-14 (Dave)", "12-14 (Dave)"],
-      ["15-16 (Hao Jie)", "15-16 (Hao Jie)"],
-      ["15-16 (Nick)", "15-16 (Nick)"],
-      ["17 and above (Alvin)", "17 and above (Alvin)"],
-      ["12-14 (Chri)", "12-14 (Chri)"],
-      ["12-14 (Ruth)", "12-14 (Ruth)"],
-      ["15-16 (Yen Mii)", "15-16 (Yen Mii)"],
-      ["15-16 (Jas)", "17 and above (Jas)"],
-      ["17 and above (Eleni)", "17 and above (Eleni)"],
+      ["Doulos (12-14 boys)", "12-14 (Dave)"],
+      ["Anchor (12-14 boys)", "15-16 (Hao Jie)"],
+      ["Forge (15-16)", "15-16 (Nick)"],
+      ["Hypernicao (17 and above boys)", "17 and above (Alvin)"],
+      ["Forza (12-14 girls)", "12-14 (Chri)"],
+      ["HIS (12-14 girls)", "12-14 (Ruth)"],
+      ["Courage (15-16 girls)", "15-16 (Yen Mii)"],
+      ["PPG (15-16 girls)", "17 and above (Jas)"],
+      ["Pursue (17 and above girls)", "17 and above (Eleni)"],
       ["Others", "others"]
     ]
 

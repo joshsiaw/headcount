@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary, :filter_attendees, :summary]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :generate_summary, :filter_attendees, :summary, :toggle_attendee]
   before_action :set_new_attendees, only: [:show]
+  before_action :set_attendee, only: [:toggle_attendee]
   respond_to :html, :json, :js, :pdf
 
   def index
@@ -56,6 +57,14 @@ class EventsController < ApplicationController
     @group = params[:group]
   end
 
+  def toggle_attendee
+    if Attendance.exists?(event_id: params[:id], attendee_id: params[:attendee_id])
+      Attendance.find_by(event_id: params[:id], attendee_id: params[:attendee_id]).destroy
+    else
+      Attendance.create(event_id: params[:id], attendee_id: params[:attendee_id])
+    end
+  end
+
   def summary
   end
 
@@ -66,6 +75,10 @@ class EventsController < ApplicationController
 
     def set_new_attendees
       @new_attendees = Attendee.not_present(@event)
+    end
+
+    def set_attendee
+      @attendee = Attendee.find(params[:attendee_id])
     end
 
     def event_params
