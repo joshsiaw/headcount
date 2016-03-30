@@ -31,10 +31,6 @@
 
 <h3>Attendees</h3>
 
-<%= render "events/attendees", event: @event %>
-
-<h3>Add Attendees</h3>
-
 <div class="dropdown">
   Filter By 
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownAttendeeGrp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -42,13 +38,14 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownAttendeeGrp">
+    <li><%= link_to "None", filter_attendees_event_path(@event, group: ""), remote:true %></li>
     <% Attendee::GROUP.each do |group| %>
       <li><%= link_to group[0], filter_attendees_event_path(@event, group: group[1]), remote:true %></li>
     <% end %>
   </ul></br></br>
 </div>
 
-<%= render "events/add_attendees", event: @event, new_attendees: @new_attendees %>
+<%= render "events/attendees", event: @event %>
 
 
 
