@@ -27,15 +27,15 @@ class Attendee < ActiveRecord::Base
 
   GROUP = 
     [
-      ["Doulos (12-14 boys)", "12-14 (Dave)"],
-      ["Anchor (12-14 boys)", "15-16 (Hao Jie)"],
-      ["Forge (15-16)", "15-16 (Nick)"],
-      ["Hypernicao (17 and above boys)", "17 and above (Alvin)"],
-      ["Forza (12-14 girls)", "12-14 (Chri)"],
-      ["HIS (12-14 girls)", "12-14 (Ruth)"],
-      ["Courage (15-16 girls)", "15-16 (Yen Mii)"],
-      ["PPG (15-16 girls)", "17 and above (Jas)"],
-      ["Pursue (17 and above girls)", "17 and above (Eleni)"],
+      ["Doulos (12-14 boys)", "Doulos (12-14 boys)"],
+      ["Anchor (12-14 boys)", "Anchor (12-14 boys)"],
+      ["Forge (15-16)", "Forge (15-16)"],
+      ["Hypernicao (17 and above boys)", "Hypernicao (17 and above boys)"],
+      ["Forza (12-14 girls)", "Forza (12-14 girls)"],
+      ["HIS (12-14 girls)", "HIS (12-14 girls)"],
+      ["Courage (15-16 girls)", "Courage (15-16 girls)"],
+      ["PPG (15-16 girls)", "PPG (15-16 girls)"],
+      ["Pursue (17 and above girls)", "Pursue (17 and above girls)"],
       ["Others", "others"]
     ]
 
