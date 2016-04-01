@@ -1,5 +1,5 @@
 <div id="attendees" class="transitions-enabled">
-  <% Attendee.group_by(@group).each do |attendee| %>
+  <% Attendee.group_by(@group).order_by_alphabetical.each do |attendee| %>
     <%= link_to toggle_attendee_event_path(@event, attendee_id: attendee.id), method: :put, remote: true do %>
       <div id="attendee_<%= attendee.id %>" class="box panel panel-default <%= 'selected' if Attendance.exists?(event_id: @event.id, attendee_id: attendee.id) %>">
         <%= image_tag attendee.image.url(:thumb) %>
