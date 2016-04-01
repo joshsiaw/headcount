@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Attendees</h1>
-
+<%= link_to 'Add Attendee', new_attendee_path, class: "btn btn-primary" %>
+<%= link_to 'Back to Dashboard', root_path, class: "btn btn-default" %>
 <table class="table" data-classes="table-no-bordered" data-toggle="table" data-search="true">
   <thead>
     <tr>
@@ -40,5 +41,3 @@
   </tbody>
 </table>
 <br/>
-<%= link_to 'Add Attendee', new_attendee_path, class: "btn btn-primary" %>
-<%= link_to 'Back to Dashboard', root_path, class: "btn btn-default" %>
