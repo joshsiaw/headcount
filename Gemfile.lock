@@ -1,4 +1,23 @@
 GIT
+  remote: git://github.com/activeadmin/activeadmin.git
+  revision: 2f7703600953b05e629e101a2b4d5a4c8844740c
+  specs:
+    activeadmin (1.0.0.pre2)
+      arbre (~> 1.0, >= 1.0.2)
+      bourbon
+      coffee-rails
+      formtastic (~> 3.1)
+      formtastic_i18n
+      inherited_resources (~> 1.6)
+      jquery-rails
+      jquery-ui-rails
+      kaminari (~> 0.15)
+      rails (>= 3.2, < 5.0)
+      ransack (~> 1.3)
+      sass-rails
+      sprockets (< 4)
+
+GIT
   remote: git://github.com/mattsears/nyan-cat-formatter.git
   revision: 1f22d288e9af06db9cbed17063f557ad3e9b0754
   specs:
@@ -67,6 +86,8 @@ GEM
       memoizable (~> 0.4.0)
     addressable (2.4.0)
     andand (1.3.3)
+    arbre (1.0.3)
+      activesupport (>= 3.0.0)
     arel (6.0.3)
     ast (2.2.0)
     autoprefixer-rails (6.3.1)
@@ -78,12 +99,16 @@ GEM
       jmespath (~> 1.0)
     aws-sdk-resources (2.2.14)
       aws-sdk-core (= 2.2.14)
+    bcrypt (3.1.9)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     bootstrap-table-rails (1.9.1)
+    bourbon (4.2.6)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.2)
     byebug (8.2.2)
     capybara (2.6.2)
@@ -118,6 +143,13 @@ GEM
       safe_yaml (~> 1.0.0)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     equalizer (0.0.11)
     erubis (2.7.0)
@@ -129,14 +161,25 @@ GEM
     ffi (1.9.10)
     file-temp (1.2.1)
       ffi (>= 1.0.0)
+    formtastic (3.1.4)
+      actionpack (>= 3.2.13)
+    formtastic_i18n (0.6.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    has_scope (0.6.0)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hashdiff (0.2.3)
     headless (2.2.0)
     i18n (0.7.0)
     ice_nine (0.11.2)
+    inherited_resources (1.6.0)
+      actionpack (>= 3.2, < 5)
+      has_scope (~> 0.6.0.rc)
+      railties (>= 3.2, < 5)
+      responders
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -148,7 +191,12 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -168,6 +216,7 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    orm_adapter (0.5.0)
     parser (2.2.0.pre.8)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
@@ -178,6 +227,8 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    polyamorous (1.3.0)
+      activerecord (>= 3.0)
     prawn (1.3.0)
       pdf-core (~> 0.4.0)
       ttfunk (~> 1.4.0)
@@ -217,6 +268,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
     rake (10.5.0)
+    ransack (1.7.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.2)
     rdoc (4.2.1)
       json (~> 1.4)
     redis (3.2.2)
@@ -316,6 +373,8 @@ GEM
       parser (~> 2.2.0.pre.7)
       procto (~> 0.0.2)
     vcr (3.0.1)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -346,6 +405,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin!
   aws-sdk (~> 2)
   bootstrap-sass
   bootstrap-table-rails
@@ -354,6 +414,7 @@ DEPENDENCIES
   capybara-puma
   coffee-rails (~> 4.1.0)
   database_cleaner
+  devise
   fabrication
   fakeredis
   ffaker

@@ -22,8 +22,8 @@
         <td><%= attendee.first_name %></td>
         <td><%= attendee.last_name %></td>
         <td><%= attendee.age %></td>
-        <td><%= attendee.category.capitalize %></td>
-        <td><%= attendee.group %></td>
+        <td><%= if attendee.attendee_category.blank? then "" else attendee.attendee_category.name end %></td>
+        <td><%= if attendee.attendee_group.blank? then "" else attendee.attendee_group.name end %></td>
         <td><%= attendee.attendances_count %></td>
         <td>
           <%= link_to attendee_path(attendee) do %>

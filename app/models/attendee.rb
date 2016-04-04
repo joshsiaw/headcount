@@ -1,14 +1,14 @@
 class Attendee < ActiveRecord::Base
   has_many :attendances
   has_many :events, through: :attendances
+  belongs_to :attendee_category
+  belongs_to :attendee_group
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100#" }, default_url: "user.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   validates :first_name, presence: true
   validates :contact_no, presence: true
   validates :age, presence: true
-  validates :category, presence: true
-  validates :group, presence: true
 
   scope :not_present, -> (event) { where.not(id: event.attendees.pluck(:id)).order('attendees.first_name') }
   scope :group_by, -> (group) { where("group" => group) if group.present? }
