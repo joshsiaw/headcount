@@ -39,8 +39,8 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownAttendeeGrp">
     <li><%= link_to "None", filter_attendees_event_path(@event, group: ""), remote:true %></li>
-    <% Attendee::GROUP.each do |group| %>
-      <li><%= link_to group[0], filter_attendees_event_path(@event, group: group[1]), remote:true %></li>
+    <% AttendeeGroup.all.each do |group| %>
+      <li><%= link_to group.name, filter_attendees_event_path(@event, group: group.id), remote:true %></li>
     <% end %>
   </ul></br></br>
 </div>
