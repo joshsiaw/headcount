@@ -2,11 +2,14 @@
 
 <h1>Events</h1>
 
+<%= link_to 'Add Event', new_event_path, class: "btn btn-primary" %>
+<%= link_to 'Back to Dashboard', root_path, class: "btn btn-default" %>
+
 <table class="table">
   <thead>
     <tr>
       <th>Date</th>
-      <th>Event Type</th>
+      <th>Type</th>
       <th>Venue</th>
       <th>Actions</th>
     </tr>
@@ -40,6 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Add Event', new_event_path, class: "btn btn-primary" %>
-<%= link_to 'Back to Dashboard', root_path, class: "btn btn-default" %>

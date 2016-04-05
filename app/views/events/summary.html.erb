@@ -34,6 +34,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Age</th>
       <th>Contact No.</th>
       <th>Category</th>
       <th>eGroup</th>
@@ -45,9 +46,10 @@
     <% Attendee.first_timers(@event).each do |visitor| %>
       <tr>
         <td><%= visitor.name %></td>
+        <td><%= visitor.age %></td>
         <td><%= visitor.contact_no %></td>
-        <td><%= visitor.category.capitalize %></td>
-        <td><%= visitor.group %></td>
+        <td><%= visitor.attendee_category.name %></td>
+        <td><%= visitor.attendee_group.name %></td>
         <td>
           <%= link_to attendee_path(visitor) do %>
             <i style="font-size:1.5em;" class="glyphicon glyphicon-eye-open" title="View"></i>
