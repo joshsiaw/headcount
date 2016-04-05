@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
     end
 
     def report_params
-      params.require(:report).permit(:event_id, :author, :group, :remark)
+      params.require(:report).permit(:event_id, :author, :group, :remark, :attendee_group_id)
     end
 
     def generate_report(event, report)
@@ -70,17 +70,17 @@ class ReportsController < ApplicationController
         item(:author).value(report.author)
         item(:created_at).value(report.created_at)
         item(:remark).value(report.remark)
-        item(:total).value(event.attendees.group_by(report.group).count)
+        item(:total).value(report.attendee_group.attendees.present(event).count)
         item(:group).value(report.group)
 
-        event.attendees.group_by(report.group).each do |attendee|
+        report.attendee_group.attendees.present(event).each do |attendee|
           pdf.list(:attendees).add_row do |row|
             row.values name: attendee.name
             row.values category: attendee.category
           end
         end
 
-        Attendee.not_present(event).group_by(report.group).each do |absentee|
+        report.attendee_group.attendees.not_present(event).each do |absentee|
           pdf.list(:absentees).add_row do |row|
             row.values name: absentee.name
             row.values category: absentee.category

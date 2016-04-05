@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404072211) do
+ActiveRecord::Schema.define(version: 20160405022844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,10 +113,12 @@ ActiveRecord::Schema.define(version: 20160404072211) do
     t.string   "author"
     t.string   "group"
     t.string   "remark"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "attendee_group_id"
   end
 
+  add_index "reports", ["attendee_group_id"], name: "index_reports_on_attendee_group_id", using: :btree
   add_index "reports", ["event_id"], name: "index_reports_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -141,5 +143,6 @@ ActiveRecord::Schema.define(version: 20160404072211) do
   add_foreign_key "attendances", "events"
   add_foreign_key "attendees", "attendee_categories"
   add_foreign_key "attendees", "attendee_groups"
+  add_foreign_key "reports", "attendee_groups"
   add_foreign_key "reports", "events"
 end

@@ -11,8 +11,18 @@
 </div>
 
 <div class="row" >
+  <div class="col-sm-2"><label for="group"><b>New Group:</b></label></div>
+  <div class="col-sm-10"><%= @report.attendee_group.name %></div>
+</div>
+
+<div class="row" >
   <div class="col-sm-2"><label for="total_present"><b>Total Present:</b></label></div>
   <div class="col-sm-10"><%= @event.attendees.group_by(@report.group).count %></div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="total_present"><b>New Total Present:</b></label></div>
+  <div class="col-sm-10"><%= @report.attendee_group.attendees.present(@event).count %></div>
 </div>
 
 <div class="row" >
@@ -42,6 +52,26 @@
   </tbody>
 </table>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Contact No</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @report.attendee_group.attendees.present(@event).each do |attendee| %>
+      <tr>
+        <td><%= attendee.name %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.contact_no %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <h3>Absent</h3>
 
 <table class="table">
@@ -55,6 +85,26 @@
 
   <tbody>
     <% Attendee.not_present(@event).group_by(@report.group).each do |attendee| %>
+      <tr>
+        <td><%= attendee.name %></td>
+        <td><%= attendee.category %></td>
+        <td><%= attendee.contact_no %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Contact No</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @report.attendee_group.attendees.not_present(@event).each do |attendee| %>
       <tr>
         <td><%= attendee.name %></td>
         <td><%= attendee.category %></td>
