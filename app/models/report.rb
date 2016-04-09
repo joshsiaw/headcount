@@ -5,5 +5,4 @@ class Report < ActiveRecord::Base
   validates :event_id, presence: true
   validates :attendee_group_id, presence: true
   validates :author, presence: true
-  validates :group, presence: true
 end
