@@ -5,6 +5,10 @@ class Event < ActiveRecord::Base
 
   validates :date, presence: true
   validates :category, presence: true
+  validates :prayer_count_1, numericality: { only_integer: true }
+  validates :prayer_count_2, numericality: { only_integer: true }
+  validates :head_count_1, numericality: { only_integer: true }
+  validates :head_count_2, numericality: { only_integer: true }
 
   scope :order_by_created_at, -> { order('events.created_at DESC, events.id') }
 
