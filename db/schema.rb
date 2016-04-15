@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405022844) do
+ActiveRecord::Schema.define(version: 20160415050447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,10 @@ ActiveRecord::Schema.define(version: 20160405022844) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "attendances_count", default: 0
+    t.integer  "prayer_count_1"
+    t.integer  "prayer_count_2"
+    t.integer  "head_count_1"
+    t.integer  "head_count_2"
   end
 
   create_table "reports", force: :cascade do |t|

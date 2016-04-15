@@ -82,7 +82,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:date, :venue, :category)
+      params.require(:event).permit(:date, :venue, :category, :prayer_count_1, :prayer_count_2, :head_count_1, :head_count_2)
     end
 
     def generate_event_summary(event)

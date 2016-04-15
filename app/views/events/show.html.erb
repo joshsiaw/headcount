@@ -16,6 +16,26 @@
 </div>
 
 <div class="row" >
+  <div class="col-sm-2"><label for="prayer_count_1"><b>Prayer Start:</b></label></div>
+  <div class="col-sm-10"><%= @event.prayer_count_1 %></div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="prayer_count_2"><b>Prayer End:</b></label></div>
+  <div class="col-sm-10"><%= @event.prayer_count_2 %></div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="head_count_1"><b>Service Start:</b></label></div>
+  <div class="col-sm-10"><%= @event.head_count_1 %></div>
+</div>
+
+<div class="row" >
+  <div class="col-sm-2"><label for="head_count_2"><b>Service End:</b></label></div>
+  <div class="col-sm-10"><%= @event.head_count_2 %></div>
+</div>
+
+<div class="row" >
   <div class="col-sm-2"><label for="total"><b>Total Present:</b></label></div>
   <div class="col-sm-10"><%= @event.attendances.count %></div>
 </div>
