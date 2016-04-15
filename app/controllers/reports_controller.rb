@@ -71,7 +71,7 @@ class ReportsController < ApplicationController
         item(:created_at).value(report.created_at)
         item(:remark).value(report.remark)
         item(:total).value(report.attendee_group.attendees.present(event).count)
-        item(:group).value(report.group)
+        item(:group).value(report.attendee_group.name)
 
         report.attendee_group.attendees.present(event).each do |attendee|
           pdf.list(:attendees).add_row do |row|
@@ -88,7 +88,7 @@ class ReportsController < ApplicationController
         end
       end
 
-      send_data pdf.generate, filename: 'egroup_report.pdf', 
+      send_data pdf.generate, filename: "#{report.attendee_group.name} report.pdf", 
                                  type: 'application/pdf', 
                                  disposition: 'attachment'
     end
